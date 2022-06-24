@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function getTableData(params) {
+export function getInformationData(params) {
   return request({
-    url: 'getTableData',
+    url: 'student/getInformation',
     method: 'get',
     params
   })

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { getTableData } from "@/api/test.js";
+import { getInformationData } from "../../api/test";
 export default {
   data() {
     return {
@@ -15,27 +15,31 @@ export default {
     };
   },
   mounted: function() {
+    let query = {
+      studentId: 14
+    }
     // 网络请求统一处理
-    getTableData().then(res => {
+    getInformationData(query).then(res => {
       console.log("api tableData :", res);
+      console.log(1)
       this.tableData = res.data;
     },err=>{
       console.log("err :", err);
     });
     // 网络请求直接写在文件中
-    this.req({
-      url: "getTableData",
-      data: {},
-      method: "GET"
-    }).then(
-      res => {
-        console.log("tableData :", res);
-        this.tableData = res.data;
-      },
-      err => {
-        console.log("err :", err);
-      }
-    );
+    // this.req({
+    //   url: "getTableData",
+    //   data: {},
+    //   method: "GET"
+    // }).then(
+    //   res => {
+    //     console.log("tableData :", res);
+    //     this.tableData = res.data;
+    //   },
+    //   err => {
+    //     console.log("err :", err);
+    //   }
+    // );
   },
   methods: {}
 };
